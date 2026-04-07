@@ -1,0 +1,22 @@
+1. INSTALLATION (AUTO-START)))
+To launch Dashboard automatically with Reaper:
+- Click the red "AUTO-START" button in the top bar. 
+- The script will manage your '__startup.lua' file.
+
+2. ADDING SESSIONS
+Go to the "ADD SESSION" tab:
+- BUTTON NAME: Text shown on the button.
+- TEMPLATE: Exact .rpp filename (must be in 'ProjectTemplates').
+- SCREENSET ID: Reaper action ID for screensets (e.g., 40454).
+- ACTION ID: Command ID of any action to run on load.
+- RGB COLOR: Three numbers (e.g., 100,150,255).
+
+3. RECENT PROJECTS
+The right column shows your last 10 projects opened in Reaper. Click any to open it instantly.
+
+4. PROJECT EXPLORER
+The "[ OPEN PROJECT EXPLORER ]" link opens Reaper's Media Explorer or Project List.
+
+---
+Developed by The Little Cavern - Jordi Molas v2.4 - 2026
+@noindex
