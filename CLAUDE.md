@@ -53,7 +53,7 @@ ReaPack → Synchronize packages → filter by "TLC"
 ## ReaPack Distribution
 
 Single URL for REAPER's ReaPack repository list:
-- `https://raw.githubusercontent.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/main/index.xml`
+- `https://raw.githubusercontent.com/thelittlecavernstudio-dev/The-Little-Cavern/main/index.xml`
 
 The `index.xml` is auto-generated — do not edit it by hand.
 
