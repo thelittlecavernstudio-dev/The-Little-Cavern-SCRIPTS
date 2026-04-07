@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <index version="1" name="The Little Cavern" commit="bba53c08a8765c633541a009030e14d40073a940">
   <category name="The Little Cavern JSFX">
     <reapack name="TLC ABMetrix.jsfx" type="effect" desc="TLC A/B Metrix">
@@ -14,7 +14,7 @@
         <link rel="website">https://ko-fi.com/thelittlecavern</link>
       </metadata>
       <version name="1.7" author="Jordi Molas - The Little Cavern Studio" time="2026-04-07T09:16:06Z">
-        <source>https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC%20ABMetrix.jsfx</source>
+        <source file="TLC ABMetrix.jsfx">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC%20ABMetrix.jsfx</source>
         <source file="TLC_logo_transparent_white.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC_logo_transparent_white.png</source>
       </version>
     </reapack>
@@ -34,7 +34,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Set volume of receives on selected tracks to -inf dB.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Receive%20Volume%20to%20-inf.lua</source>
+        <source main="main" file="TLC Adjust Receive Volume to -inf.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Receive%20Volume%20to%20-inf.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Adjust Send Volume to -inf.lua" type="script" desc="TLC Adjust receive volume to -inf on all tracks">
@@ -51,7 +51,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Set volume of receives on all tracks to -inf dB.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Send%20Volume%20to%20-inf.lua</source>
+        <source main="main" file="TLC Adjust Send Volume to -inf.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Send%20Volume%20to%20-inf.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Adjust Send Volumen to 0dB.lua" type="script" desc="TLC Adjust send volume to 0dB on selected tracks">
@@ -68,7 +68,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Set sends on selected tracks to 0 dB.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Send%20Volumen%20to%200dB.lua</source>
+        <source main="main" file="TLC Adjust Send Volumen to 0dB.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Send%20Volumen%20to%200dB.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Analog Molecule Matrix Console.lua" type="script" desc="TLC Analog Matrix">
@@ -115,7 +115,7 @@
 * FULL RESTORATION of logic.
 * Renamed window to TLC Analog Molecule Matrix.
 * Moved Support link to header (#0000EE).]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Analog%20Molecule%20Matrix%20Console.lua</source>
+        <source main="main" file="TLC Analog Molecule Matrix Console.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Analog%20Molecule%20Matrix%20Console.lua</source>
         <source file="TLC Analog Molecule_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
       </version>
     </reapack>
@@ -133,7 +133,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Set sends on selected tracks to Post-Fader mode.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Change%20to%20Post-Fader%20PostFX.lua</source>
+        <source main="main" file="TLC Change to Post-Fader PostFX.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Change%20to%20Post-Fader%20PostFX.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Change to Pre-Fader PostFX.lua" type="script" desc="TLC Set sends to Pre-Fader (Post-FX) on selected tracks">
@@ -150,7 +150,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Set sends on selected tracks to Pre-Fader mode with a summary report.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Change%20to%20Pre-Fader%20PostFX.lua</source>
+        <source main="main" file="TLC Change to Pre-Fader PostFX.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Change%20to%20Pre-Fader%20PostFX.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Copy Paste FX on a specific position.lua" type="script" desc="TLC Copy and paste focused FX to a specific position">
@@ -167,7 +167,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added support for copying focused FX or containers to a target position.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Copy%20Paste%20FX%20on%20a%20specific%20position.lua</source>
+        <source main="main" file="TLC Copy Paste FX on a specific position.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Copy%20Paste%20FX%20on%20a%20specific%20position.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Create timeline marks from item marks.lua" type="script" desc="TLC Create project markers from item cues">
@@ -184,7 +184,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added marker extraction from media items.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Create%20timeline%20marks%20from%20item%20marks.lua</source>
+        <source main="main" file="TLC Create timeline marks from item marks.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Create%20timeline%20marks%20from%20item%20marks.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Dashboard.lua" type="script" desc="TLC Dashboard">
@@ -209,7 +209,7 @@
 # v3.9.2
 * Fixed missing Help tab and description logic.
 * Restored full ReaImGui interface.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard.lua</source>
+        <source main="main" file="TLC Dashboard.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard.lua</source>
         <source file="TLC Dashboard Instructions_EN.txt">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard%20Instructions_EN.txt</source>
         <source file="TLC Dashboard Instructions_ES.txt">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard%20Instructions_ES.txt</source>
         <source file="TLC Dashboard_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
@@ -229,7 +229,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added FX usage export to text files.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Export%20CSV%20FX%20List%20&amp;%20Usage%20by%20Tracks.lua</source>
+        <source main="main" file="TLC Export CSV FX List &amp; Usage by Tracks.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Export%20CSV%20FX%20List%20&amp;%20Usage%20by%20Tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Export Printed Tracks.lua" type="script" desc="TLC Prepare tracks for stem export">
@@ -246,7 +246,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added track preparation for exporting stems.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Export%20Printed%20Tracks.lua</source>
+        <source main="main" file="TLC Export Printed Tracks.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Export%20Printed%20Tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Force Mixer Window Maximize.lua" type="script" desc="TLC Maximize mixer window">
@@ -263,7 +263,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added mixer window maximization.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Force%20Mixer%20Window%20Maximize.lua</source>
+        <source main="main" file="TLC Force Mixer Window Maximize.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Force%20Mixer%20Window%20Maximize.lua</source>
       </version>
     </reapack>
     <reapack name="TLC FX Monitor - Show Slot 3.lua" type="script" desc="TLC Show plugin in Monitor FX slot 3">
@@ -280,7 +280,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added direct access to Monitor FX slot 3.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20FX%20Monitor%20-%20Show%20Slot%203.lua</source>
+        <source main="main" file="TLC FX Monitor - Show Slot 3.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20FX%20Monitor%20-%20Show%20Slot%203.lua</source>
       </version>
     </reapack>
     <reapack name="TLC FX Monitor - Show Slots by Cycle.lua" type="script" desc="TLC Cycle through Monitor FX plugins">
@@ -297,7 +297,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added cycling for Monitor FX plugins.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20FX%20Monitor%20-%20Show%20Slots%20by%20Cycle.lua</source>
+        <source main="main" file="TLC FX Monitor - Show Slots by Cycle.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20FX%20Monitor%20-%20Show%20Slots%20by%20Cycle.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Locate dBTP Item.lua" type="script" desc="TLC Find True Peaks (dBTP) in audio items">
@@ -314,7 +314,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added True Peak analysis and reporting.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Locate%20dBTP%20Item.lua</source>
+        <source main="main" file="TLC Locate dBTP Item.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Locate%20dBTP%20Item.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Rename Stereo Out by Name Track #1.lua" type="script" desc="TLC Rename &quot;Stereo Out&quot; tracks to match track #1">
@@ -331,7 +331,7 @@
       <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
         <changelog><![CDATA[# Initial release
 * Added track renaming based on track #1.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Rename%20Stereo%20Out%20by%20Name%20Track%20%231.lua</source>
+        <source main="main" file="TLC Rename Stereo Out by Name Track #1.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Rename%20Stereo%20Out%20by%20Name%20Track%20%231.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Select Mixbus track only.lua" type="script" desc="TLC Select Mixbus track only">
@@ -354,7 +354,7 @@
         <changelog><![CDATA[# Initial Release
 * Selects the track named 'Mixbus'.
 * Uses case-insensitive name matching.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20Mixbus%20track%20only.lua</source>
+        <source main="main" file="TLC Select Mixbus track only.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20Mixbus%20track%20only.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Select mono tracks.lua" type="script" desc="TLC Select mono tracks">
@@ -377,7 +377,7 @@
         <changelog><![CDATA[# Initial Release
 * Selects tracks containing at least one mono audio item.
 * Checks source channel counts while ignoring MIDI items.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20mono%20tracks.lua</source>
+        <source main="main" file="TLC Select mono tracks.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20mono%20tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Select stereo tracks.lua" type="script" desc="TLC Select stereo tracks">
@@ -400,7 +400,7 @@
         <changelog><![CDATA[# Initial Release
 * Selects tracks containing at least one stereo audio item.
 * Checks source channel counts while ignoring MIDI items.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20stereo%20tracks.lua</source>
+        <source main="main" file="TLC Select stereo tracks.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20stereo%20tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Select tracks containing Print.lua" type="script" desc="TLC Select tracks containing Print">
@@ -423,7 +423,7 @@
         <changelog><![CDATA[# Initial Release
 * Selects tracks with names containing the word 'Print'.
 * Uses case-insensitive matching.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20tracks%20containing%20Print.lua</source>
+        <source main="main" file="TLC Select tracks containing Print.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20tracks%20containing%20Print.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Setlist Manager.lua" type="script" desc="TLC Setlist Manager">
@@ -453,7 +453,7 @@
 * Improved legibility: Dark text on light backgrounds.
 * Expanded window width to 850px.
 * Integrated Support link in header (#0000EE).]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Setlist%20Manager.lua</source>
+        <source main="main" file="TLC Setlist Manager.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Setlist%20Manager.lua</source>
         <source file="TLC Setlist Manager_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
       </version>
     </reapack>
@@ -484,7 +484,7 @@
 * FULL RESTORATION of logic.
 * Moved Support link to header (#0000EE).
 * Standardized alignment and white text legibility.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Thesaurus.lua</source>
+        <source main="main" file="TLC Thesaurus.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Thesaurus.lua</source>
         <source file="TLC Thesaurus_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
       </version>
     </reapack>
@@ -510,7 +510,7 @@
         <changelog><![CDATA[# Initial Release
 * Creates a time selection between the markers named '=START' and '=END'.
 * Handles marker order and provides feedback if markers are missing.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Time%20Selection%20between%20Start%20and%20End.lua</source>
+        <source main="main" file="TLC Time Selection between Start and End.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Time%20Selection%20between%20Start%20and%20End.lua</source>
       </version>
     </reapack>
     <reapack name="TLC Track on middle of MCP.lua" type="script" desc="TLC Track on middle of MCP">
@@ -535,7 +535,7 @@
         <changelog><![CDATA[# Initial Release
 * Centers the selected track in the Mixer Control Panel (MCP).
 * Background process monitors track selection and adjusts mixer scroll.]]></changelog>
-        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Track%20on%20middle%20of%20MCP.lua</source>
+        <source main="main" file="TLC Track on middle of MCP.lua">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Track%20on%20middle%20of%20MCP.lua</source>
       </version>
     </reapack>
   </category>
