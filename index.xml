@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" name="The Little Cavern" commit="bba53c08a8765c633541a009030e14d40073a940">
+  <category name="The Little Cavern JSFX">
+    <reapack name="TLC ABMetrix.jsfx" type="effect" desc="TLC A/B Metrix">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Simple A/B tool for REAPER. Compare your mix with a reference track, match levels, and solo frequency bands to check your balance. Requires 4 channels on the Master Track (1/2 Mix, 3/4 Reference).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Donations: https://ko-fi.com/thelittlecavern\par}
+}
+]]></description>
+        <link rel="website">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.7" author="Jordi Molas - The Little Cavern Studio" time="2026-04-07T09:16:06Z">
+        <source>https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC%20ABMetrix.jsfx</source>
+        <source file="TLC_logo_transparent_white.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC_logo_transparent_white.png</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="The Little Cavern SCRIPTS">
+    <reapack name="TLC Adjust Receive Volume to -inf.lua" type="script" desc="TLC Adjust receive volume to -inf on selected tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets the volume of all receives on selected tracks to -inf dB. Includes undo support.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Set volume of receives on selected tracks to -inf dB.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Receive%20Volume%20to%20-inf.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Adjust Send Volume to -inf.lua" type="script" desc="TLC Adjust receive volume to -inf on all tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets the volume of all receives on all tracks in the project to -inf dB.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Set volume of receives on all tracks to -inf dB.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Send%20Volume%20to%20-inf.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Adjust Send Volumen to 0dB.lua" type="script" desc="TLC Adjust send volume to 0dB on selected tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets all sends on selected tracks to 0 dB.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Set sends on selected tracks to 0 dB.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Adjust%20Send%20Volumen%20to%200dB.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Analog Molecule Matrix Console.lua" type="script" desc="TLC Analog Matrix">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Analog Matrix Control Suite (GFX Edition)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab High-visibility interface for Analog Molecule plugin parameters.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Manual Line-Break Help & Settings\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Refined UI labels and a robust multiline help system with manual formatting.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://ko-fi.com/thelittlecavern</link>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.6" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# v1.6 (2026-04-06)
+  + Mixed state detection: flavor selector and sliders show "MIXED" when
+    instances within a topology have divergent DSP values.
+  + Help overlay redesigned with two tabs (SETUP & USAGE / CONSOLE FLAVORS)
+    and full bilingual content (EN / ES) with scroll support.
+  + Text input fields support drag selection, double-click word selection,
+    and selection highlight.
+  + DetectFlavor(): flavor label inferred from DSP values each frame;
+    no longer read directly from JSFX parameter.
+  * Removed gmem/LINK flavor-push system (EnsureGmem, PushFlavorToNetwork,
+    SetLinkBroadcastForTopo). TAM always shows Custom — documented in Help.
+  * Removed debug logging, IPC command system, and param normalisation helpers.
+  * Removed debounce/timing machinery (pending_flavor, link_pulse, write
+    debounce, EnforceTopologyByConfig, EnforceLinkOnAll, ApplyAll).
+  * Removed SaveMatrixState/LoadMatrixState: JSFX project state is now the
+    single source of truth on startup.
+  * Preset table restructured from [topo][flavor] to [flavor][topo].
+  * mixed flag moved into state[topo].mixed; separate mixed table removed.
+  * AutoConfig now disables JSFX internal LINK on all instances.
+  * UpdatePlugins and PushChange simplified; ApplyPresetDSP writes DSP
+    values directly without gmem.
+# v1.5
+* Unified dark UI theme and improved legibility.
+* Switched logo to white variant.
+# v1.4
+* FULL RESTORATION of logic.
+* Renamed window to TLC Analog Molecule Matrix.
+* Moved Support link to header (#0000EE).]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Analog%20Molecule%20Matrix%20Console.lua</source>
+        <source file="TLC Analog Molecule_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Change to Post-Fader PostFX.lua" type="script" desc="TLC Set sends to Post-Fader (Post-FX) on selected tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets all sends on selected tracks to Post-Fader (Post-FX) mode.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Set sends on selected tracks to Post-Fader mode.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Change%20to%20Post-Fader%20PostFX.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Change to Pre-Fader PostFX.lua" type="script" desc="TLC Set sends to Pre-Fader (Post-FX) on selected tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets all sends on selected tracks to Pre-Fader (Post-FX) mode and reports the number of sends changed.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Set sends on selected tracks to Pre-Fader mode with a summary report.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Change%20to%20Pre-Fader%20PostFX.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Copy Paste FX on a specific position.lua" type="script" desc="TLC Copy and paste focused FX to a specific position">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Copies the focused FX or container from one track to selected tracks at a specified position.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added support for copying focused FX or containers to a target position.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Copy%20Paste%20FX%20on%20a%20specific%20position.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Create timeline marks from item marks.lua" type="script" desc="TLC Create project markers from item cues">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Imports CUE and BWF metadata cues from selected items as project markers.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added marker extraction from media items.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Create%20timeline%20marks%20from%20item%20marks.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Dashboard.lua" type="script" desc="TLC Dashboard">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 TLC Dashboard\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Central hub for session templates, recent projects and studio tools. Includes quick actions, color\u8209 ?coded sessions and auto-start options.\par}
+}
+]]></description>
+        <link rel="website">https://ko-fi.com/thelittlecavern</link>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="4.0.1" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# v4.0.1
+* Added Auto-Start toggle with clear user confirmation.
+# v4.0.0
+* Unified dark UI theme and sizing consistency.
+* Switched logo to white variant and preserved aspect ratio.
+# v3.9.2
+* Fixed missing Help tab and description logic.
+* Restored full ReaImGui interface.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard.lua</source>
+        <source file="TLC Dashboard Instructions_EN.txt">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard%20Instructions_EN.txt</source>
+        <source file="TLC Dashboard Instructions_ES.txt">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Dashboard%20Instructions_ES.txt</source>
+        <source file="TLC Dashboard_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Export CSV FX List &amp; Usage by Tracks.lua" type="script" desc="TLC Export track FX list and plugin usage to CSV">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Generates reports on FX chains per track and overall plugin frequency. Saves Tracks_FX.txt and FX_Usage.txt in the project directory.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added FX usage export to text files.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Export%20CSV%20FX%20List%20&amp;%20Usage%20by%20Tracks.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Export Printed Tracks.lua" type="script" desc="TLC Prepare tracks for stem export">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Mutes the "Mixbus" track and selects tracks with "Print" in their name.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added track preparation for exporting stems.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Export%20Printed%20Tracks.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Force Mixer Window Maximize.lua" type="script" desc="TLC Maximize mixer window">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Forces the mixer window to a maximized state. Requires JS_API.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added mixer window maximization.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Force%20Mixer%20Window%20Maximize.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC FX Monitor - Show Slot 3.lua" type="script" desc="TLC Show plugin in Monitor FX slot 3">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Opens the floating window for the plugin in the 3rd slot of the Monitor FX chain.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added direct access to Monitor FX slot 3.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20FX%20Monitor%20-%20Show%20Slot%203.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC FX Monitor - Show Slots by Cycle.lua" type="script" desc="TLC Cycle through Monitor FX plugins">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Cycles through all plugins in the Monitor FX chain, showing one at a time.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added cycling for Monitor FX plugins.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20FX%20Monitor%20-%20Show%20Slots%20by%20Cycle.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Locate dBTP Item.lua" type="script" desc="TLC Find True Peaks (dBTP) in audio items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Analyzes audio items to find True Peaks, accounting for volume and envelopes. Creates a report track with markers at peak positions.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added True Peak analysis and reporting.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Locate%20dBTP%20Item.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Rename Stereo Out by Name Track #1.lua" type="script" desc="TLC Rename &quot;Stereo Out&quot; tracks to match track #1">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Renames tracks named "Stereo Out" to the name of the first track in the project.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial release
+* Added track renaming based on track #1.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Rename%20Stereo%20Out%20by%20Name%20Track%20%231.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Select Mixbus track only.lua" type="script" desc="TLC Select Mixbus track only">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Mixbus Selection\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Clears current track selections and selects the track named "Mixbus".\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Name Matching\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Uses case-insensitive comparison to find the mixbus.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Navigation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Useful for navigating to the main output stage of a project.\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial Release
+* Selects the track named 'Mixbus'.
+* Uses case-insensitive name matching.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20Mixbus%20track%20only.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Select mono tracks.lua" type="script" desc="TLC Select mono tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Track Selection\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Scans tracks in the project to select those containing at least one mono audio item.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Source Detection\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Checks the media source channel count (1 channel) to determine if a track is mono.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Content Filtering\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ignores MIDI items and empty tracks to focus on mono audio.\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial Release
+* Selects tracks containing at least one mono audio item.
+* Checks source channel counts while ignoring MIDI items.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20mono%20tracks.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Select stereo tracks.lua" type="script" desc="TLC Select stereo tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Stereo Identification\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Scans tracks in the project to identify those containing at least one stereo audio item (2 channels).\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Selection\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Appends identified stereo tracks to the existing selection.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Validation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Checks the channel count of the active take while filtering out MIDI.\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial Release
+* Selects tracks containing at least one stereo audio item.
+* Checks source channel counts while ignoring MIDI items.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20stereo%20tracks.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Select tracks containing Print.lua" type="script" desc="TLC Select tracks containing Print">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Track Selection\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Identifies and selects tracks containing the word "Print" in their name.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Selection State\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Resets the project's selection state before performing the search.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Processing Preparation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Useful for stem exports or processing for projects with "Print" track naming.\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial Release
+* Selects tracks with names containing the word 'Print'.
+* Uses case-insensitive matching.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Select%20tracks%20containing%20Print.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Setlist Manager.lua" type="script" desc="TLC Setlist Manager">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Setlist Loading\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Manages project files (.RPP) into project tabs for live sets or sessions.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Asynchronous Engine\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Handles project loading without freezing the REAPER interface.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Drag-and-Drop\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Add songs by dragging .RPP files directly onto the interface.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://ko-fi.com/thelittlecavern</link>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.3" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# v1.3
+* Manager starts with empty list (no default setlist).
+* Switched logo to white variant.
+* Minor UI copy and sizing improvements.
+# v1.2
+* FULL RESTORATION of logic.
+* Improved legibility: Dark text on light backgrounds.
+* Expanded window width to 850px.
+* Integrated Support link in header (#0000EE).]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Setlist%20Manager.lua</source>
+        <source file="TLC Setlist Manager_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Thesaurus.lua" type="script" desc="TLC Thesaurus">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Plugin renaming and database tool\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Tool for plugin naming and database management.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://ko-fi.com/thelittlecavern</link>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.9" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# v1.9
+* Clarified keyword matching with examples in Add New and Help.
+# v1.8
+* Refined Help copy and clarified behavior of renaming and tools.
+# v1.7
+* Added Help section (EN/ES).
+# v1.6
+* Unified dark UI theme with other TLC tools.
+* Switched logo to white variant and preserved aspect ratio.
+# v1.5
+* FULL RESTORATION of logic.
+* Moved Support link to header (#0000EE).
+* Standardized alignment and white text legibility.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Thesaurus.lua</source>
+        <source file="TLC Thesaurus_logo.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC_logo_transparent_white.png</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Time Selection between Start and End.lua" type="script" desc="TLC Time Selection between Start and End">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Time Range Creation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sets the project's time selection between two markers named "=START" and "=END".\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Marker Detection\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Scans project markers while ignoring regions for selection boundaries.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Feedback\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Provides a message box if markers are missing.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Marker Order\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Adjusts if markers are placed in reverse order.\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial Release
+* Creates a time selection between the markers named '=START' and '=END'.
+* Handles marker order and provides feedback if markers are missing.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Time%20Selection%20between%20Start%20and%20End.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TLC Track on middle of MCP.lua" type="script" desc="TLC Track on middle of MCP">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Mixer Centering\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Centers the selected track in the Mixer Control Panel (MCP) using a visual offset.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Background Monitoring\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Runs in the background and monitors track selection changes.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Offset\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Uses a customizable offset to position the selected track in the mixer view.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Visual Context\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Calculates the scroll position based on the selection.\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="1.0" author="Jordi Molas - The Little Cavern" time="2026-04-07T09:16:06Z">
+        <changelog><![CDATA[# Initial Release
+* Centers the selected track in the Mixer Control Panel (MCP).
+* Background process monitors track selection and adjusts mixer scroll.]]></changelog>
+        <source main="main">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20SCRIPTS/TLC%20Track%20on%20middle%20of%20MCP.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <metadata>
+    <link rel="website" href="https://github.com/thelittlecavernstudio-dev/The-Little-Cavern-SCRIPTS">GitHub</link>
+    <link rel="donation" href="https://ko-fi.com/thelittlecavern">Ko-fi</link>
+  </metadata>
+</index>
