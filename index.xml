@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="The Little Cavern" commit="bba53c08a8765c633541a009030e14d40073a940">
+<index version="1" name="The Little Cavern" commit="0fc5d1867eb364d856b4fed4b85c590fc014d79b">
   <category name="The Little Cavern JSFX">
     <reapack name="TLC ABMetrix.jsfx" type="effect" desc="TLC A/B Metrix">
       <metadata>
@@ -16,6 +16,50 @@
       <version name="1.7" author="Jordi Molas - The Little Cavern Studio" time="2026-04-07T09:16:06Z">
         <source file="TLC ABMetrix.jsfx">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC%20ABMetrix.jsfx</source>
         <source file="TLC_logo_transparent_white.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/bba53c08a8765c633541a009030e14d40073a940/The%20Little%20Cavern%20JSFX/TLC_logo_transparent_white.png</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="The Little Cavern JSFX/Subkick Varnish Project">
+    <reapack name="TLC SubKick Varnish.jsfx" type="effect" desc="TLC SubKick Varnish">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Synthetic sub kick generator with custom PNG skin UI. Uses sidechain input (channels 3/4) to trigger a sine wave oscillator with gate envelope, EQ, and soft clipper. Place on SubKick track. Send kick to channels 3/4 as trigger.\par}
+}
+]]></description>
+        <link rel="donation">https://ko-fi.com/thelittlecavern</link>
+      </metadata>
+      <version name="0.6" author="Jordi Molas - The Little Cavern" time="2026-04-09T16:17:16Z">
+        <changelog><![CDATA[v0.6 (2026-04-08)
+  * Knob arc 135° (20:00 to 05:00)
+  * Threshold default 0 dB (fully open)
+  * Output Gain 0 dB centered at 00:00
+  * Fixed EN/ES tab hit detection
+v0.5 (2026-04-08)
+  + Window 800px wide, proportional to 1440px design
+  + Updated parameter ranges
+  + Double-click on value text resets to default
+  + Dynamic values 12pt, centered on knob
+  + Help: EN/ES tabs, ABMetrix font style, close button
+  + Support: ABMetrix donate style, ko-fi URL, close button
+  + Knob arc 120° (20:00 to 04:00)
+  + Output Gain default at 00:00 (0 dB)
+  + ESC closes overlays]]></changelog>
+        <source file="TLC SubKick Varnish.jsfx">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/TLC%20SubKick%20Varnish.jsfx</source>
+        <source file="TLC SubKick Varnish_bkg.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/bkg.png</source>
+        <source file="TLC SubKick Varnish_gen_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/generator_knob.png</source>
+        <source file="TLC SubKick Varnish_thr_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/treshold_knob.png</source>
+        <source file="TLC SubKick Varnish_att_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/attack_knob.png</source>
+        <source file="TLC SubKick Varnish_hld_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/hold_knob.png</source>
+        <source file="TLC SubKick Varnish_rel_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/release_knob.png</source>
+        <source file="TLC SubKick Varnish_drv_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/clipper_drive_knob.png</source>
+        <source file="TLC SubKick Varnish_out_knob.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/output_knob.png</source>
+        <source file="TLC SubKick Varnish_led_on.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/gate_on_led.png</source>
+        <source file="TLC SubKick Varnish_led_off.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/gate_off_led.png</source>
+        <source file="TLC SubKick Varnish_help_btn.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/help.png</source>
+        <source file="TLC SubKick Varnish_support_btn.png">https://github.com/thelittlecavernstudio-dev/The-Little-Cavern/raw/0fc5d1867eb364d856b4fed4b85c590fc014d79b/The%20Little%20Cavern%20JSFX/Subkick%20Varnish%20Project/Assets/support.png</source>
       </version>
     </reapack>
   </category>
