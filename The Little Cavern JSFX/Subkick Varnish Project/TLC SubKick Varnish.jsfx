@@ -1,0 +1,468 @@
+-- @description TLC SubKick Varnish
+-- @version 0.6
+-- @author Jordi Molas - The Little Cavern
+-- @donation https://ko-fi.com/thelittlecavern
+-- @about
+--   Synthetic sub kick generator with custom PNG skin UI.
+--   Uses sidechain input (channels 3/4) to trigger a sine wave
+--   oscillator with gate envelope, EQ, and soft clipper.
+--   Place on SubKick track. Send kick to channels 3/4 as trigger.
+-- @changelog
+--   v0.6 (2026-04-08)
+--     * Knob arc 135° (20:00 to 05:00)
+--     * Threshold default 0 dB (fully open)
+--     * Output Gain 0 dB centered at 00:00
+--     * Fixed EN/ES tab hit detection
+--   v0.5 (2026-04-08)
+--     + Window 800px wide, proportional to 1440px design
+--     + Updated parameter ranges
+--     + Double-click on value text resets to default
+--     + Dynamic values 12pt, centered on knob
+--     + Help: EN/ES tabs, ABMetrix font style, close button
+--     + Support: ABMetrix donate style, ko-fi URL, close button
+--     + Knob arc 120° (20:00 to 04:00)
+--     + Output Gain default at 00:00 (0 dB)
+--     + ESC closes overlays
+-- @provides
+--   [main] TLC SubKick Varnish.jsfx
+--   Assets/bkg.png > TLC SubKick Varnish_bkg.png
+--   Assets/generator_knob.png > TLC SubKick Varnish_gen_knob.png
+--   Assets/treshold_knob.png > TLC SubKick Varnish_thr_knob.png
+--   Assets/attack_knob.png > TLC SubKick Varnish_att_knob.png
+--   Assets/hold_knob.png > TLC SubKick Varnish_hld_knob.png
+--   Assets/release_knob.png > TLC SubKick Varnish_rel_knob.png
+--   Assets/clipper_drive_knob.png > TLC SubKick Varnish_drv_knob.png
+--   Assets/output_knob.png > TLC SubKick Varnish_out_knob.png
+--   Assets/gate_on_led.png > TLC SubKick Varnish_led_on.png
+--   Assets/gate_off_led.png > TLC SubKick Varnish_led_off.png
+--   Assets/help.png > TLC SubKick Varnish_help_btn.png
+--   Assets/support.png > TLC SubKick Varnish_support_btn.png
+
+desc: TLC SubKick Varnish
+
+in_pin: Main L
+in_pin: Main R
+in_pin: Sidechain L
+in_pin: Sidechain R
+out_pin: Output L
+out_pin: Output R
+
+slider1:10<0,50,0.1>-Sub Frequency (Hz)
+slider2:0<-12,12,0.1>-Output Gain (dB)
+slider3:0<-60,0,0.1>-Gate Threshold (dB)
+slider4:3<0,50,0.1>-Attack (ms)
+slider5:0<0,100,0.1>-Hold (ms)
+slider6:50<0,100,0.1>-Release (ms)
+slider7:1<0,5,0.01>-Soft Clip Drive
+
+@init
+
+// ── DSP state ──────────────────────────────────────────────
+phase = 0; env = 0; hold_counter = 0; gate_state = 0;
+x1_pk=0; x2_pk=0; y1_pk=0; y2_pk=0;
+x1_lp=0; x2_lp=0; y1_lp=0; y2_lp=0;
+
+// ── UI state ───────────────────────────────────────────────
+show_help    = 0;
+show_support = 0;
+help_tab     = 0;    // 0=EN  1=ES
+drag_knob    = -1;
+last_mdown   = 0;
+dv_hit       = 0;
+gfx_init_done = 0;
+
+// Double-click tracking
+frame_count  = 0;
+click_frame  = -999;
+click_knob   = -1;
+DBLCK        = 20;
+
+// Slider defaults for double-click reset
+DEF_S1=10; DEF_S2=0;  DEF_S3=0;
+DEF_S4=3;  DEF_S5=0;  DEF_S6=50; DEF_S7=1;
+
+// Knob sweep: 135° arc, 20:00 → 05:00
+// Empirical: 5π/3→150°, 4π/3→120°, so 3π/2→135°
+// Output knob PNG indicator starts at 00:00 → use centered formula
+KAMIN   = 2*$pi/3;
+KARANGE = 3*$pi/2;
+
+// Image handles
+img_bkg=-1; img_gen=-1; img_thr=-1; img_att=-1; img_hld=-1;
+img_rel=-1; img_drv=-1; img_out=-1; img_led_on=-1; img_led_off=-1;
+img_help_btn=-1; img_sup_btn=-1;
+
+// ── DSP helpers ────────────────────────────────────────────
+function sinh(x)          ( (exp(x)-exp(-x))/2 );
+function tanh(x) local(e) ( e=exp(2*x); (e-1)/(e+1) );
+
+function calc_peak(freq,gdb,bw) local(A,w,al,a0) (
+  A=10^(gdb/40); w=2*$pi*freq/srate;
+  al=sin(w)*sinh(log(2)/2*bw*w/sin(w));
+  a0=1+al/A;
+  pk_b0=(1+al*A)/a0; pk_b1=(-2*cos(w))/a0; pk_b2=(1-al*A)/a0;
+  pk_a1=(-2*cos(w))/a0; pk_a2=(1-al/A)/a0;
+);
+
+function calc_lp(freq,q) local(w,al,n) (
+  w=2*$pi*freq/srate; al=sin(w)/(2*q); n=1+al;
+  lp_b0=(1-cos(w))/2/n; lp_b1=(1-cos(w))/n; lp_b2=(1-cos(w))/2/n;
+  lp_a1=-2*cos(w)/n; lp_a2=(1-al)/n;
+);
+
+// ── GFX helpers ────────────────────────────────────────────
+function knob_rot(val,vmin,vmax) ( max(0,min(1,(val-vmin)/(vmax-vmin)))*KARANGE );
+function hit_knob(cx,cy,r) ( (mouse_x-cx)*(mouse_x-cx)+(mouse_y-cy)*(mouse_y-cy)<=r*r );
+function hit_btn(x,y,w,h)  ( mouse_x>=x&&mouse_x<=x+w&&mouse_y>=y&&mouse_y<=y+h );
+
+@slider
+freq     = slider1;
+out_gain = 10^(slider2/20);
+thresh   = 10^(slider3/20);
+att_c    = slider4==0 ? 0 : exp(-log(9)/(srate*slider4*0.001));
+hld_s    = srate*slider5*0.001;
+rel_c    = slider6==0 ? 0 : exp(-log(9)/(srate*slider6*0.001));
+drive    = max(0.001, slider7);
+calc_peak(75,1.5,1.94);
+calc_lp(184,0.7071);
+
+@sample
+sc = max(abs(spl2),abs(spl3));
+
+gate_state==0 ? (
+  sc>=thresh ? ( gate_state=1; phase=0 );
+) : gate_state==1 ? (
+  env=1-(1-env)*att_c;
+  env>=0.999 ? ( env=1; hold_counter=0; gate_state=2 );
+) : gate_state==2 ? (
+  hold_counter+=1;
+  sc<thresh && hold_counter>=hld_s ? ( gate_state=3 );
+) : (
+  env*=rel_c;
+  sc>=thresh  ? ( gate_state=1 );
+  env<0.0001  ? ( gate_state=0; env=0 );
+);
+
+phase+=freq/srate; phase>=1 ? phase-=1;
+osc=sin(phase*2*$pi)*env*out_gain;
+
+sig=pk_b0*osc+pk_b1*x1_pk+pk_b2*x2_pk-pk_a1*y1_pk-pk_a2*y2_pk;
+x2_pk=x1_pk; x1_pk=osc; y2_pk=y1_pk; y1_pk=sig;
+
+out_s=lp_b0*sig+lp_b1*x1_lp+lp_b2*x2_lp-lp_a1*y1_lp-lp_a2*y2_lp;
+x2_lp=x1_lp; x1_lp=sig; y2_lp=y1_lp; y1_lp=out_s;
+
+out_s=tanh(out_s*drive)/tanh(drive);
+
+spl0=out_s; spl1=out_s;
+
+@gfx 800 489
+
+W=gfx_w; H=gfx_h;
+GS=W/1440.0;    // Design scale: maps 1440px design → actual window
+
+frame_count+=1;
+gfx_getchar()==27 ? ( show_help=0; show_support=0 );
+
+// ── First-frame: load all PNG assets ──────────────────────
+gfx_init_done==0 ? (
+  img_bkg = gfx_loadimg(0, "Assets/bkg.png");
+  img_bkg < 0 ? img_bkg = gfx_loadimg(0, "TLC SubKick Varnish_bkg.png");
+
+  img_gen = gfx_loadimg(1, "Assets/generator_knob.png");
+  img_gen < 0 ? img_gen = gfx_loadimg(1, "TLC SubKick Varnish_gen_knob.png");
+
+  img_thr = gfx_loadimg(2, "Assets/treshold_knob.png");
+  img_thr < 0 ? img_thr = gfx_loadimg(2, "TLC SubKick Varnish_thr_knob.png");
+
+  img_att = gfx_loadimg(3, "Assets/attack_knob.png");
+  img_att < 0 ? img_att = gfx_loadimg(3, "TLC SubKick Varnish_att_knob.png");
+
+  img_hld = gfx_loadimg(4, "Assets/hold_knob.png");
+  img_hld < 0 ? img_hld = gfx_loadimg(4, "TLC SubKick Varnish_hld_knob.png");
+
+  img_rel = gfx_loadimg(5, "Assets/release_knob.png");
+  img_rel < 0 ? img_rel = gfx_loadimg(5, "TLC SubKick Varnish_rel_knob.png");
+
+  img_drv = gfx_loadimg(6, "Assets/clipper_drive_knob.png");
+  img_drv < 0 ? img_drv = gfx_loadimg(6, "TLC SubKick Varnish_drv_knob.png");
+
+  // output_knob.png is 144×144 — same density as treshold/drive, use GS directly
+  img_out = gfx_loadimg(7, "Assets/output_knob.png");
+  img_out < 0 ? img_out = gfx_loadimg(7, "TLC SubKick Varnish_out_knob.png");
+
+  img_led_on = gfx_loadimg(8, "Assets/gate_on_led.png");
+  img_led_on < 0 ? img_led_on = gfx_loadimg(8, "TLC SubKick Varnish_led_on.png");
+
+  img_led_off = gfx_loadimg(9, "Assets/gate_off_led.png");
+  img_led_off < 0 ? img_led_off = gfx_loadimg(9, "TLC SubKick Varnish_led_off.png");
+
+  img_help_btn = gfx_loadimg(10, "Assets/help.png");
+  img_help_btn < 0 ? img_help_btn = gfx_loadimg(10, "TLC SubKick Varnish_help_btn.png");
+
+  img_sup_btn = gfx_loadimg(11, "Assets/support.png");
+  img_sup_btn < 0 ? img_sup_btn = gfx_loadimg(11, "TLC SubKick Varnish_support_btn.png");
+
+  gfx_init_done=1;
+);
+
+// ════════════════════════════════════════════════════════════
+// RENDERING
+// ════════════════════════════════════════════════════════════
+
+// ── 1. BACKGROUND — bkg.png 1440×880 → W×H ────────────────
+img_bkg>=0 ? (
+  gfx_x=0; gfx_y=0; gfx_blit(img_bkg, GS, 0);
+) : (
+  gfx_r=0.13; gfx_g=0.14; gfx_b=0.17; gfx_a=1;
+  gfx_rect(0,0,W,H,1);
+);
+
+// ── 2. BUTTONS ─────────────────────────────────────────────
+img_help_btn>=0 ? ( gfx_x=931*GS;  gfx_y=44*GS; gfx_blit(img_help_btn, GS, 0); );
+img_sup_btn>=0  ? ( gfx_x=1147*GS; gfx_y=44*GS; gfx_blit(img_sup_btn,  GS, 0); );
+
+// ── 3. KNOBS ────────────────────────────────────────────────
+// All PNGs are at design resolution → scale = GS
+// Knob sizes in design: Gen=176, Thr=144, Att/Hld/Rel=80, Drv=144, Out=144
+// Centers (doc): Gen(188,430) Thr(720,319) Att(566,578)
+//                Hld(720,578) Rel(874,578) Drv(1204,332) Out(1201,625)
+// Output knob doc TL=(1129,553), size=144 → center=(1129+72, 553+72)=(1201,625)
+
+img_gen>=0 ? ( gfx_x=100*GS;  gfx_y=342*GS; gfx_blit(img_gen, GS, knob_rot(slider1,0,50));   );
+img_thr>=0 ? ( gfx_x=648*GS;  gfx_y=247*GS; gfx_blit(img_thr, GS, knob_rot(slider3,-60,0));  );
+img_att>=0 ? ( gfx_x=526*GS;  gfx_y=538*GS; gfx_blit(img_att, GS, knob_rot(slider4,0,50));   );
+img_hld>=0 ? ( gfx_x=680*GS;  gfx_y=538*GS; gfx_blit(img_hld, GS, knob_rot(slider5,0,100));  );
+img_rel>=0 ? ( gfx_x=834*GS;  gfx_y=538*GS; gfx_blit(img_rel, GS, knob_rot(slider6,0,100));  );
+img_drv>=0 ? ( gfx_x=1132*GS; gfx_y=260*GS; gfx_blit(img_drv, GS, knob_rot(slider7,0,5));    );
+// Output Gain: PNG indicator starts at 00:00 → use centered formula
+// -12 dB → ~20:00  |  0 dB → 00:00  |  +12 dB → ~05:00
+// rotation = slider2/12 * (KARANGE/2)  →  0 at center, ±KARANGE/2 at extremes
+img_out>=0 ? ( gfx_x=1129*GS; gfx_y=553*GS; gfx_blit(img_out, GS, slider2 * KARANGE / 24); );
+
+// ── 4. GATE LED — doc TL (707,741), 25×25 ─────────────────
+gate_state>0 ? (
+  img_led_on>=0  ? ( gfx_x=707*GS; gfx_y=741*GS; gfx_blit(img_led_on,  GS, 0); );
+) : (
+  img_led_off>=0 ? ( gfx_x=707*GS; gfx_y=741*GS; gfx_blit(img_led_off, GS, 0); );
+);
+
+// ── 5. DYNAMIC VALUES — 12pt white, centered on knob X ─────
+// Knob center X (doc) = TL_x + half_size
+// Freq:188  Thr:720  Att:566  Hld:720  Rel:874  Drv:1204  Out:1201
+// Value Y (doc):  583   453    683    683    683    463    758
+gfx_r=1; gfx_g=1; gfx_b=1; gfx_a=1;
+gfx_setfont(1,"Arial",12);
+
+sprintf(#s,"%d Hz",   slider1); gfx_measurestr(#s,tw,th); gfx_x=188*GS-tw/2;  gfx_y=583*GS; gfx_drawstr(#s);
+sprintf(#s,"%.1f dB", slider3); gfx_measurestr(#s,tw,th); gfx_x=720*GS-tw/2;  gfx_y=453*GS; gfx_drawstr(#s);
+sprintf(#s,"%.0f ms", slider4); gfx_measurestr(#s,tw,th); gfx_x=566*GS-tw/2;  gfx_y=683*GS; gfx_drawstr(#s);
+sprintf(#s,"%.0f ms", slider5); gfx_measurestr(#s,tw,th); gfx_x=720*GS-tw/2;  gfx_y=683*GS; gfx_drawstr(#s);
+sprintf(#s,"%.0f ms", slider6); gfx_measurestr(#s,tw,th); gfx_x=874*GS-tw/2;  gfx_y=683*GS; gfx_drawstr(#s);
+sprintf(#s,"%.2f",    slider7); gfx_measurestr(#s,tw,th); gfx_x=1204*GS-tw/2; gfx_y=463*GS; gfx_drawstr(#s);
+sprintf(#s,"%.1f dB", slider2); gfx_measurestr(#s,tw,th); gfx_x=1201*GS-tw/2; gfx_y=758*GS; gfx_drawstr(#s);
+
+// ════════════════════════════════════════════════════════════
+// MOUSE HANDLING
+// ════════════════════════════════════════════════════════════
+// Pre-compute overlay bounds (needed before the render blocks set them)
+ov_hw=700; ov_hh=410; ov_hx=(W-ov_hw)/2; ov_hy=(H-ov_hh)/2;
+ov_sw=500; ov_sh=200; ov_sx=(W-ov_sw)/2; ov_sy=(H-ov_sh)/2;
+
+mdown=mouse_cap&1;
+
+mdown&&!last_mdown ? (
+
+  // Header buttons (always active)
+  hit_btn(931*GS, 44*GS, 160*GS, 51*GS) ? ( show_help=!show_help; show_support=0; );
+  hit_btn(1147*GS,44*GS, 270*GS, 51*GS) ? ( show_support=!show_support; show_help=0; );
+
+  // Overlay close buttons
+  show_help ? (
+    hit_btn(ov_hx+ov_hw-40, ov_hy+10, 30, 30) ? show_help=0;   // X close
+    hit_btn(ov_hx+50, ov_hy+76, 60, 26) ? help_tab=0;            // EN tab
+    hit_btn(ov_hx+120, ov_hy+76, 60, 26) ? help_tab=1;          // ES tab
+  );
+  show_support ? (
+    hit_btn(ov_sx+ov_sw-40, ov_sy+10, 30, 30) ? show_support=0; // X close
+  );
+
+  // Knob/value interactions (only when no overlay)
+  !show_help && !show_support ? (
+
+    // Value text hit-boxes (double-click resets to default)
+    dv_hit=0;
+    hit_btn(188*GS-40,  583*GS, 80, 20) ? dv_hit=1;
+    hit_btn(720*GS-40,  453*GS, 80, 20) ? dv_hit=3;
+    hit_btn(566*GS-40,  683*GS, 80, 20) ? dv_hit=4;
+    hit_btn(720*GS-40,  683*GS, 80, 20) ? dv_hit=5;
+    hit_btn(874*GS-40,  683*GS, 80, 20) ? dv_hit=6;
+    hit_btn(1204*GS-40, 463*GS, 80, 20) ? dv_hit=7;
+    hit_btn(1201*GS-40, 758*GS, 80, 20) ? dv_hit=2;
+
+    dv_hit>0 ? (
+      (frame_count-click_frame<DBLCK) && (dv_hit==click_knob) ? (
+        dv_hit==1 ? ( slider1=DEF_S1; freq=slider1 );
+        dv_hit==2 ? ( slider2=DEF_S2; out_gain=10^(slider2/20) );
+        dv_hit==3 ? ( slider3=DEF_S3; thresh=10^(slider3/20) );
+        dv_hit==4 ? ( slider4=DEF_S4; att_c=slider4==0?0:exp(-log(9)/(srate*slider4*0.001)) );
+        dv_hit==5 ? ( slider5=DEF_S5; hld_s=srate*slider5*0.001 );
+        dv_hit==6 ? ( slider6=DEF_S6; rel_c=slider6==0?0:exp(-log(9)/(srate*slider6*0.001)) );
+        dv_hit==7 ? ( slider7=DEF_S7; drive=max(0.001,slider7) );
+        sliderchange(1<<(dv_hit-1));
+        click_knob=-1;
+      ) : (
+        click_knob=dv_hit; click_frame=frame_count;
+      );
+    ) : (
+      // Knob circle → drag
+      // Centers (doc): Gen(188,430)r88 Thr(720,319)r72 Att(566,578)r40
+      //                Hld(720,578)r40 Rel(874,578)r40 Drv(1204,332)r72 Out(1201,625)r72
+      cur_knob=0;
+      hit_knob(188*GS,  430*GS, 88*GS) ? cur_knob=1;
+      hit_knob(720*GS,  319*GS, 72*GS) ? cur_knob=3;
+      hit_knob(566*GS,  578*GS, 40*GS) ? cur_knob=4;
+      hit_knob(720*GS,  578*GS, 40*GS) ? cur_knob=5;
+      hit_knob(874*GS,  578*GS, 40*GS) ? cur_knob=6;
+      hit_knob(1204*GS, 332*GS, 72*GS) ? cur_knob=7;
+      hit_knob(1201*GS, 625*GS, 72*GS) ? cur_knob=2;
+
+      cur_knob>0 ? (
+        drag_knob=cur_knob; dsy=mouse_y;
+        cur_knob==1 ? dsv=slider1;
+        cur_knob==2 ? dsv=slider2;
+        cur_knob==3 ? dsv=slider3;
+        cur_knob==4 ? dsv=slider4;
+        cur_knob==5 ? dsv=slider5;
+        cur_knob==6 ? dsv=slider6;
+        cur_knob==7 ? dsv=slider7;
+      );
+    );
+  );
+);
+
+!mdown ? drag_knob=-1;
+drag_knob>0 && mdown ? (
+  dy=dsy-mouse_y;
+  drag_knob==1 ? ( slider1=max(0,   min(50,  dsv+dy*0.17));  freq    =slider1 );
+  drag_knob==2 ? ( slider2=max(-12, min(12,  dsv+dy*0.08));  out_gain=10^(slider2/20) );
+  drag_knob==3 ? ( slider3=max(-60, min(0,   dsv+dy*0.20));  thresh  =10^(slider3/20) );
+  drag_knob==4 ? ( slider4=max(0,   min(50,  dsv+dy*0.17));  att_c=slider4==0?0:exp(-log(9)/(srate*slider4*0.001)) );
+  drag_knob==5 ? ( slider5=max(0,   min(100, dsv+dy*0.33));  hld_s=srate*slider5*0.001 );
+  drag_knob==6 ? ( slider6=max(0,   min(100, dsv+dy*0.33));  rel_c=slider6==0?0:exp(-log(9)/(srate*slider6*0.001)) );
+  drag_knob==7 ? ( slider7=max(0,   min(5,   dsv+dy*0.017)); drive=max(0.001,slider7) );
+  sliderchange(1<<(drag_knob-1));
+);
+last_mdown=mdown;
+
+// ════════════════════════════════════════════════════════════
+// HELP OVERLAY — ABMetrix guide style
+// Panel centred, 700×410
+// ════════════════════════════════════════════════════════════
+show_help ? (
+  ov_hw=700; ov_hh=410;
+  ov_hx=(W-ov_hw)/2; ov_hy=(H-ov_hh)/2;
+
+  // Dim + panel (ABMetrix: draw_3d_panel style)
+  gfx_set(0,0,0,0.85); gfx_rect(0,0,W,H);
+  gfx_set(0.12,0.12,0.12,1); gfx_rect(ov_hx,ov_hy,ov_hw,ov_hh);
+  gfx_set(1,1,1,0.1); gfx_rect(ov_hx,ov_hy,ov_hw,3); gfx_rect(ov_hx,ov_hy,3,ov_hh);
+  gfx_set(0,0,0,0.3); gfx_rect(ov_hx,ov_hy+ov_hh-3,ov_hw,3); gfx_rect(ov_hx+ov_hw-3,ov_hy,3,ov_hh);
+
+  // Title — 22pt bold white (ABMetrix style)
+  gfx_set(1,1,1,1); gfx_setfont(1,"Arial",22,'b');
+  t_str="SETUP GUIDE"; gfx_measurestr(t_str,tw,th);
+  gfx_x=ov_hx+(ov_hw-tw)/2; gfx_y=ov_hy+28; gfx_drawstr(t_str);
+
+  // Accent line under title
+  gfx_set(1,0.5,0,0.8); gfx_rect(ov_hx+50,ov_hy+28+th+6,ov_hw-100,2);
+
+  // X close button (ABMetrix: draw_btn style)
+  gfx_set(0.8,0.1,0.1,1); gfx_rect(ov_hx+ov_hw-40,ov_hy+10,30,30);
+  gfx_set(1,1,1,1); gfx_setfont(1,"Arial",16,'b');
+  gfx_measurestr("X",tw,th);
+  gfx_x=ov_hx+ov_hw-40+(30-tw)/2; gfx_y=ov_hy+10+(30-th)/2; gfx_printf("X");
+
+  // EN / ES tab buttons
+  help_tab==0 ? gfx_set(0.2,0.6,0.9,1) : gfx_set(0.2,0.2,0.2,1);
+  gfx_rect(ov_hx+50, ov_hy+76, 60, 26);
+  gfx_set(1,1,1,1); gfx_setfont(1,"Arial",16,'b');
+  gfx_measurestr("EN",tw,th); gfx_x=ov_hx+50+(60-tw)/2; gfx_y=ov_hy+76+(26-th)/2; gfx_printf("EN");
+
+  help_tab==1 ? gfx_set(0.2,0.6,0.9,1) : gfx_set(0.2,0.2,0.2,1);
+  gfx_rect(ov_hx+120, ov_hy+76, 60, 26);
+  gfx_set(1,1,1,1); gfx_setfont(1,"Arial",16,'b');
+  gfx_measurestr("ES",tw,th); gfx_x=ov_hx+120+(60-tw)/2; gfx_y=ov_hy+76+(26-th)/2; gfx_printf("ES");
+
+  gfx_set(0.3,0.3,0.3,1); gfx_rect(ov_hx+50,ov_hy+108,ov_hw-100,1);
+
+  // Content at 18pt/20pt (ABMetrix style)
+  cx=ov_hx+50; ty=ov_hy+118; lh=24;
+
+  help_tab==0 ? (
+    gfx_set(1,1,1,1); gfx_setfont(1,"Arial",18,'i');
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("Suggested setup order:"); ty+=lh+6;
+
+    gfx_setfont(1,"Arial",20,'b');
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("1.  Create a new track named SubKick"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("2.  Kick track: Routing > send to SubKick ch 3/4"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("3.  Insert TLC SubKick Varnish on SubKick track"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("4.  Pins: 4in/2out  Ch3>Sidechain L  Ch4>Sidechain R"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("5.  Adjust THRESHOLD until GATE LED lights on kick"); ty+=lh+6;
+
+    gfx_set(0.7,0.7,0.7,1); gfx_setfont(1,"Arial",16,'i');
+    sig_str="Developed by The Little Cavern & Jordi Molas || thelittlecavernstudio@gmail.com";
+    gfx_measurestr(sig_str,tw,th); gfx_x=ov_hx+(ov_hw-tw)/2; gfx_y=ov_hy+ov_hh-32; gfx_drawstr(sig_str);
+    gfx_set(1,1,1,1); gfx_setfont(1,"Arial",16,'i');
+    tip_str="Tip: double-click any value to reset it to default";
+    gfx_measurestr(tip_str,tw,th); gfx_x=ov_hx+(ov_hw-tw)/2; gfx_y=ov_hy+ov_hh-54; gfx_drawstr(tip_str);
+  ) : (
+    gfx_set(1,1,1,1); gfx_setfont(1,"Arial",18,'i');
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("Orden de configuracion sugerido:"); ty+=lh+6;
+
+    gfx_setfont(1,"Arial",20,'b');
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("1.  Crea una pista nueva llamada SubKick"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("2.  Pista Kick: Routing > envia a SubKick ch 3/4"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("3.  Inserta TLC SubKick Varnish en la pista SubKick"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("4.  Pines: 4in/2out  Ch3>Sidechain L  Ch4>Sidechain R"); ty+=lh;
+    gfx_x=cx; gfx_y=ty; gfx_drawstr("5.  Ajusta THRESHOLD hasta que el LED GATE se encienda"); ty+=lh+6;
+
+    gfx_set(0.7,0.7,0.7,1); gfx_setfont(1,"Arial",16,'i');
+    sig_str="Developed by The Little Cavern & Jordi Molas || thelittlecavernstudio@gmail.com";
+    gfx_measurestr(sig_str,tw,th); gfx_x=ov_hx+(ov_hw-tw)/2; gfx_y=ov_hy+ov_hh-32; gfx_drawstr(sig_str);
+    gfx_set(1,1,1,1); gfx_setfont(1,"Arial",16,'i');
+    tip_str="Consejo: doble clic en cualquier valor para restablecer";
+    gfx_measurestr(tip_str,tw,th); gfx_x=ov_hx+(ov_hw-tw)/2; gfx_y=ov_hy+ov_hh-54; gfx_drawstr(tip_str);
+  );
+);
+
+// ════════════════════════════════════════════════════════════
+// SUPPORT OVERLAY — ABMetrix donate style
+// Panel 500×200 centred
+// ════════════════════════════════════════════════════════════
+show_support ? (
+  ov_sw=500; ov_sh=200;
+  ov_sx=(W-ov_sw)/2; ov_sy=(H-ov_sh)/2;
+
+  // Dim + panel
+  gfx_set(0,0,0,0.9); gfx_rect(0,0,W,H);
+  gfx_set(0.15,0.15,0.15,1); gfx_rect(ov_sx,ov_sy,ov_sw,ov_sh);
+  gfx_set(1,1,1,0.1); gfx_rect(ov_sx,ov_sy,ov_sw,5); gfx_rect(ov_sx,ov_sy,5,ov_sh);
+  gfx_set(0,0,0,0.3); gfx_rect(ov_sx,ov_sy+ov_sh-5,ov_sw,5); gfx_rect(ov_sx+ov_sw-5,ov_sy,5,ov_sh);
+
+  // Title — 22pt bold white
+  gfx_set(1,1,1,1); gfx_setfont(1,"Arial",22,'b');
+  t_str="SUPPORT THE PROJECT"; gfx_measurestr(t_str,tw,th);
+  gfx_x=ov_sx+(ov_sw-tw)/2; gfx_y=ov_sy+40; gfx_drawstr(t_str);
+
+  // URL — 20pt bold cyan
+  gfx_set(0.2,0.8,1,1); gfx_setfont(1,"Arial",20,'b');
+  u_str="https://ko-fi.com/thelittlecavern"; gfx_measurestr(u_str,tw,th);
+  gfx_x=ov_sx+(ov_sw-tw)/2; gfx_y=ov_sy+95; gfx_drawstr(u_str);
+
+  // X close button (ABMetrix style)
+  gfx_set(0.8,0.1,0.1,1); gfx_rect(ov_sx+ov_sw-40,ov_sy+10,30,30);
+  gfx_set(1,1,1,1); gfx_setfont(1,"Arial",16,'b');
+  gfx_measurestr("X",tw,th);
+  gfx_x=ov_sx+ov_sw-40+(30-tw)/2; gfx_y=ov_sy+10+(30-th)/2; gfx_printf("X");
+);
